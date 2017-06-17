@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.soap.cxf.java.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="FileUploadService" targetNamespace="http://ws.soap.cxf.java.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.soap.cxf.java.com/" elementFormDefault="unqualified" targetNamespace="http://ws.soap.cxf.java.com/" version="1.0">
+
+  <xs:element name="downloadFile" type="tns:downloadFile"/>
+
+  <xs:element name="downloadFileResponse" type="tns:downloadFileResponse"/>
+
+  <xs:element name="uploadFile" type="tns:uploadFile"/>
+
+  <xs:element name="uploadFileResponse" type="tns:uploadFileResponse"/>
+
+  <xs:complexType name="downloadFile">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="downloadFileResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="uploadFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="uploadFileResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="downloadFileResponse">
+    <wsdl:part element="tns:downloadFileResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="downloadFile">
+    <wsdl:part element="tns:downloadFile" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="uploadFile">
+    <wsdl:part element="tns:uploadFile" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="uploadFileResponse">
+    <wsdl:part element="tns:uploadFileResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="FileUpload">
+    <wsdl:operation name="downloadFile">
+      <wsdl:input message="tns:downloadFile" name="downloadFile">
+    </wsdl:input>
+      <wsdl:output message="tns:downloadFileResponse" name="downloadFileResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="uploadFile">
+      <wsdl:input message="tns:uploadFile" name="uploadFile">
+    </wsdl:input>
+      <wsdl:output message="tns:uploadFileResponse" name="uploadFileResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FileUploadServiceSoapBinding" type="tns:FileUpload">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="downloadFile">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="downloadFile">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="downloadFileResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="uploadFile">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="uploadFile">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="uploadFileResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FileUploadService">
+    <wsdl:port binding="tns:FileUploadServiceSoapBinding" name="FileUploadPort">
+      <soap:address location="http://localhost:8080/cxfsoapws/services/fileService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

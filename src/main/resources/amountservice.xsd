@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://ws.soap.cxf.java.com/" elementFormDefault="unqualified"
+	targetNamespace="http://ws.soap.cxf.java.com/" version="1.0">
+
+	<xs:element name="addAmount" type="tns:addAmount" />
+
+	<xs:element name="addAmountResponse" type="tns:addAmountResponse" />
+
+	<xs:element name="substractAmount" type="tns:substractAmount" />
+
+	<xs:element name="substractAmountResponse" type="tns:substractAmountResponse" />
+
+	<xs:complexType name="substractAmount">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="amountToSubstract" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="substractAmountResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="totalAmount" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="addAmount">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="amountToAdd" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="addAmountResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="totalAmount" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>
